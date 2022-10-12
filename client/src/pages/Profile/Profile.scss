@@ -1,0 +1,73 @@
+.profile-outer-container{
+  width: 100%; 
+ 
+  .profile-container{
+    margin-top: 30px;
+      border-radius: 30px;
+    background-color: white;
+    overflow: hidden;
+    .profile-section{
+      padding: 30px;
+      width:100%;
+      display: flex;
+      .image-container{
+        height: 300px;
+        width: 40%;
+        img{
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+      }
+      .profile-content{
+        width: 60%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap:10px;
+        .name{
+          font-size: 24px;
+          font-weight: bold;
+          color: var(--blue);
+        }
+        .followers{
+          font-size: 18px;
+          color:var(--pink)
+        }
+        .department{
+          font-weight: bold;
+        }
+        .batch{
+          font-weight: 600;
+        }
+      }
+    }
+  }  
+  .my-posts-container{
+    margin-top: 10px;
+    border-radius: 30px;
+    background-color: white;
+    padding: 20px;
+    .posts-list-heading{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+        .count {
+            background-color: var(--pink);
+            color: var(--white);
+            border-radius: 50%;
+            padding: 6px;
+          }
+          i{
+            font-size: 2rem;
+          }
+    }
+    
+
+  } 
+}
+
+

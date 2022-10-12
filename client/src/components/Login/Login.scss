@@ -1,0 +1,37 @@
+.login-container{
+    margin-top: 5%;
+
+    .login-head-content{
+        color: var(--blue);
+    }
+    .kec-container{
+        text-shadow: 2px 2px cornsilk;
+        text-align: center;
+        margin-top: 25px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    .forgot-container{
+        text-align:right;
+        margin: 10px;
+    }
+    .sign-container{
+        text-align: center;
+    }
+    .btn{
+        font-size:16px;
+        background-color: var(--blue);
+        color:var(--white);
+        &:hover{
+            opacity: 0.8;
+        }
+      
+    }
+    label{
+        font-size: 18px;
+    }
+   
+    
+}
+
+ /* .card-container */
+

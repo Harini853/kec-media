@@ -1,0 +1,33 @@
+.body-container{
+    // background-image: url('https://genhq.com/wp-content/uploads/2018/12/SocialMediaGenZ.gif');
+    background-image: url('https://freefrontend.com/assets/img/css-social-media-icons/HTML-CSS-Social-Icons-Vision-3D.gif');
+    height: 100vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .get-started-link{
+        display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+    .started-link{
+       margin-top: 2%;
+
+    }
+}
+.p-container{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pre{
+        margin-top: 20%;
+
+    font-weight: bolder;
+
+
+    }
+}
+}

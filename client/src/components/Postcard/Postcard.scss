@@ -1,0 +1,43 @@
+.post-card-container{
+    padding: 30px;
+    border-bottom: 2px solid lightgray;
+    .profile-name-container{
+        display: flex;
+        align-items: center;
+        gap:10px;
+        i{
+            font-size: 18px;
+        }
+    }
+    .student-dept{
+        font-size: 18px;
+    }
+    .post-card-img-container{
+        height: 300px;
+        width: 100%;
+       
+        img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+    }
+    .bottom-icons-container{
+        margin-top: 10px;
+        display: flex;
+        justify-content: flex-start;
+        gap:10px;
+        align-items: center;
+        i{
+            font-size: 2rem;
+        }
+    }
+    .view-btn{
+        margin: 10px  0;
+        font-size: 18px;
+    }
+    
+}
+
+
