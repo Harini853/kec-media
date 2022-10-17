@@ -21,8 +21,9 @@ const NewPostForm = () => {
           <div className="card">
             <div className="card-body">
               <form onSubmit={handleSubmit}>
+                <input type="text" />
                   <input type="file" onChange={e => setFile(e.target.value)} />
-                  {file}
+                  
               </form>
             </div>
           </div>

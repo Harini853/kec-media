@@ -2,6 +2,7 @@ import React from 'react'
 import './Profile.scss'
 import Navbar from '../../components/Navbar/Navbar'
 import profile from '../../assets/images/profile.jfif'
+import { Link } from 'react-router-dom'
 const Profile = () => {
   return (
     <div className="profile-outer-container">
@@ -23,12 +24,14 @@ const Profile = () => {
                 </div>
            </div>
         </div>
-        
-          <div className="row">
+         <div className="row">
             <div className="col-md-8 offset-md-2 col-sm-12 my-posts-container">
               <div className="posts-list-heading">
                 <h2>My Posts <span className="count">20</span></h2>
+                <Link to='/New'>
                 <i className="fa-solid fa-plus" />
+                </Link>
+                
             </div>
          
         </div>
