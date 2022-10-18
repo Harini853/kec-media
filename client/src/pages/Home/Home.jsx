@@ -3,8 +3,10 @@ import Navbar from '../../components/Navbar/Navbar'
 import RightSideBar from '../../components/RightSideBar/RightSideBar'
 import Posts from '../../components/Posts/Posts'
 import LeftSideBar from '../../components/LeftSideBar/LeftSideBar'
+
 import './Home.scss'
 const Home = () => {
+ 
   return (
     <div className="home-container">
         <Navbar />

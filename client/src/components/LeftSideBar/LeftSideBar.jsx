@@ -1,7 +1,9 @@
 import React,{useState} from 'react'
 import './LeftSideBar.scss'
+import { useSelector } from 'react-redux'
 import profile from '../../assets/images/profile.jfif'
 const LeftSideBar = () => {
+  const User = useSelector((state)=>(state.currentUserReducer))
   return (
     <div className='left-side-bar-container shadow'>
         <div className="img-container">
@@ -9,12 +11,12 @@ const LeftSideBar = () => {
             
         </div>
         <div className='profile-content'>
-              <p className="profile-name">harini_853</p>
+              <p className="profile-name">{User?.result?.name}</p>
               <p className="profile-joined text-muted p-0">Joined 3 months ago</p>
-              <p className="profile-details">
-                <p className="followers">50 followers</p>
+              <div className="profile-details">
+               <p className="followers">50 followers</p>
                 <p className="posts">10 posts</p>
-              </p>
+              </div >
         </div>
     </div>
   )

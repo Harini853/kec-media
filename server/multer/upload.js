@@ -4,9 +4,10 @@ const storage = multer.diskStorage({
     destination: function (req, file, cb) {
       cb(null, './public/posts')
     },
-    filename: function (req, file, cb) {
-      cb(null, file.originalname)
-    },
+     filename:(req,file,callback) =>{
+        const ext=file.mimetype.split('/')[1]
+        callback(null,`image-${Date.now()}.${ext}`)
+    }
     
   })
   888
@@ -14,7 +15,7 @@ const storage = multer.diskStorage({
     (req, file, cb) => {
         const acceptableExtensions = ['.jpeg','.jpg','.png','.svg'];
         if (!(acceptableExtensions.includes(Path.extname(file.originalname)))) {
-          return cb(new Error('Upload Only pdf files'));
+          return cb(new Error('Upload Only images files'));
         }
         cb(null,true)
     }

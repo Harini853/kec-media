@@ -14,6 +14,7 @@ module.exports.signUp = async(req,res)=>{
         const newUser=new User({name,email,password:hashPassword})
         await newUser.save();
         const token = jwt.sign({email:newUser.email,id:newUser._id},'token',{expiresIn:'1h'})
+        console.log(token,newUser)
         res.status(200).json({result:newUser,token})
     } catch (err) {
         res.status(500).json('Something went worng...')

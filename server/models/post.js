@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const {Schema}=mongoose
 
 const postSchema = new Schema({
-    name:String,
+    description:String,
     image:String,
     postedBy:{
         type:Schema.Types.ObjectId,
@@ -31,4 +31,4 @@ const postSchema = new Schema({
     ]
 })
 
-module.export = mongoose.model('Post',postSchema)
+module.exports = mongoose.model('Post',postSchema)

@@ -6,21 +6,26 @@ module.exports.getAllPosts = async(req,res)=>{
         const posts = await Post.find().populate('postedBy');
         res.status(200).json(posts)
     } catch (err) {
+        console.log(err.message)
         res.status(500).json({msg:err.message})
     }
 }
 
 module.exports.newPost=async(req,res)=>{
-    const {id}=req.body;
+    const {id,description}=req.body;
+    console.log(id)
     try {
         const user = await User.findById(id);
-        const newPost = new Post(...req.body)
-        newPost.image=req.file.path
-        user.posts.push(newPost)
+        console.log(user)
+        const newPost = new Post({description})
+        newPost.image=req.file.path.substring(6)
+        newPost.postedBy=user._id
+        user.posts.push(newPost._id)
         await user.save()
         await newPost.save();
         res.status(200).send('success')
     } catch (err) {
+        console.log(err.message)
         res.status(500).json({msg:err.message})
     }
 }

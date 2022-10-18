@@ -1,6 +1,7 @@
 const express = require('express')
 const dotenv = require('dotenv')
 const app = express()
+const path=require('path')
 const mongoose=require("mongoose")
 const cors=require("cors")
 const userRoutes = require('./routes/user.js')
@@ -14,7 +15,7 @@ mongoose.connect(DATABASE_URL,{useNewUrlParser:true,useUnifiedTopology:true})
 }).catch(err => {
     console.log("OOPS !! ERROR")
 })
-
+app.use(express.static(path.join(__dirname, "/public")))
 
 
 app.use(express.json({extended:true}))
