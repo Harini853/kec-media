@@ -34,8 +34,21 @@
         }
     }
     .view-btn{
+
         margin: 10px  0;
         font-size: 18px;
+        .btn{
+        color:var(--pink) !important;
+        }
+    }
+
+    .bottom-icons-content{
+        display: flex;
+        gap:10px;
+        p{
+            font-size: 14px;
+            font-weight: bold;
+        }
     }
     
 }

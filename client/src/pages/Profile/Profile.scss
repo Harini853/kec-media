@@ -1,6 +1,11 @@
 .profile-outer-container{
   width: 100%; 
- 
+  .edit-profile-btn{
+    .btn{
+      color: white;
+      background-color: var(--blue);
+    }
+  }
   .profile-container{
     margin-top: 30px;
       border-radius: 30px;
@@ -39,7 +44,7 @@
         .department{
           font-weight: bold;
         }
-        .batch{
+        .batch,.email,.phone{
           font-weight: 600;
         }
       }
@@ -56,10 +61,10 @@
       align-items: center;
       padding: 20px;
         .count {
-            background-color: var(--pink);
-            color: var(--white);
+            background-color:var(--blue);
+            color: white;
             border-radius: 50%;
-            padding: 6px;
+            padding: 10px;
           }
           i{
             font-size: 2rem;

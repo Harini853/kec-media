@@ -55,26 +55,37 @@ module.exports.deletePost = async(req,res)=>{
 
 
 module.exports.likePost = async(req,res)=>{
-    const {id} = req.params
-    const {userId}=req.body
+
+    const {userId,id}=req.body
     try {
         const post = await Post.findById(id)
-        const likeCount = post.likes.findIndex((id) => id === String(userId))
+        const likeCount = post.likes.findIndex((id) => id == String(userId))
+       
         if(likeCount ===-1){
                  post.likes.push(userId)
         }
-        await Post.save();
+        await post.save();
         res.status(200).json({message:"Liked successfully..."})
         
     } catch (err) {
+        console.log(err.message)
         res.status(400).json({message:err.message})
     }
 }
 
 module.exports.addComment = async(req,res)=>{
-    const {id,body,userID}=req.body
+    const {id,content,userId}=req.body
     try {
         const post = await Post.findById(id);
+        const user=await User.findById(userId)
+        let comment ={
+            commentedBy:user._id,
+            content:content
+    }
+        post.comment.push(comment)
+        await post.save()
+        console.log(post)
+        res.status(200).json("success")
     } catch (err) {
         res.status(500).json({msg:err.message})
     }

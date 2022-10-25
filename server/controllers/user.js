@@ -2,19 +2,20 @@ const mongoose = require('mongoose')
 const jwt=  require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const User=  require('../models/user.js')
+const user = require('../models/user.js')
 
 module.exports.signUp = async(req,res)=>{
-    const {name,email,password} = req.body
+    const {name,email,password,rollno,phone,batch,department} = req.body
     try {
         const existinguser=await User.findOne({email}).populate('enrolled')
         if(existinguser){
             return res.status(400).json({message:'User already found..'})
         }
         const hashPassword = await bcrypt.hash(password,12);
-        const newUser=new User({name,email,password:hashPassword})
+        const newUser=new User({name,email,rollno,phone,department,batch,password:hashPassword})
+        newUser.image=req.file.path.substring(6)
         await newUser.save();
         const token = jwt.sign({email:newUser.email,id:newUser._id},'token',{expiresIn:'1h'})
-        console.log(token,newUser)
         res.status(200).json({result:newUser,token})
     } catch (err) {
         res.status(500).json('Something went worng...')
@@ -36,5 +37,55 @@ module.exports.login = async(req,res) =>{
         res.status(200).json({result:existinguser,token})
     }catch(err){
         res.status(500).json(err.message)
+    }
+}
+
+module.exports.updatePhoto = async(req,res)=>{
+    const {id}=req.body
+    try {
+        const user = await User.findById(id)
+        user.image=req.file.path.substring(6)
+        await user.save()
+        res.status(200).json('success')
+
+    } catch (err) {
+        res.status(500).send(err)
+    }
+}
+
+module.exports.updatePassword=async(req,res)=>{
+    const {id,password}=req.body
+    try {
+        const user=await User.findById(id)
+        const hashPassword = await bcrypt.hash(password,12);
+        user.password=hashPassword;
+        await user.save()
+        res.status(200).json("success")
+
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}
+
+module.exports.updateDetails = async(req,res)=>{
+    const {about,phone,id}=req.body
+    try {
+        const user=await User.findById(id)
+        user.about=about;
+        user.phone=phone;
+        await user.save()
+        res.status(200).json("success");
+    } catch (err) {
+        res.status(500).send(err)
+    }
+}
+
+module.exports.myDetails = async(req,res)=>{
+    const {id}=req.params
+    try {
+        const user=await User.findById(id).populate('posts')
+        res.status(200).json(user)
+    } catch (err) {
+        res.status(500).send(err)
     }
 }

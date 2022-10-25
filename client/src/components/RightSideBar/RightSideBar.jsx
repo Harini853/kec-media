@@ -13,7 +13,7 @@ const RightSideBar = () => {
             <div className="search-list">
                 <p className="top-results">Top Results</p>
                   <div className="list">
-                    {arr.map((a,idx) => <ProfileSmallCard key={idx}/>)}
+                    {/* {arr.map((a,idx) => <ProfileSmallCard key={idx}/>)} */}
                   </div>
             </div>
     </div>

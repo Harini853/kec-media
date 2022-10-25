@@ -9,6 +9,7 @@ const userSchema = new Schema({
     department:String,
     rollno:String,
     image:String,
+    batch:String,
     joinedOn:{
         type:Date,
         default:Date.now
@@ -17,6 +18,12 @@ const userSchema = new Schema({
         {
              type:Schema.Types.ObjectId,
              ref:'Post'
+        }
+    ],
+    followers:[
+        {
+        type:Schema.Types.ObjectId,
+        ref:'User'
         }
     ]
 })

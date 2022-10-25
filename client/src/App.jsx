@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { setCurrentUser } from './actions/currentUser';
 import { useEffect } from 'react';
 import { getAllPost } from './actions/post';
+import {setMyDetails} from './actions/details'
 const App = () => {
 
   const dispatch=useDispatch()
@@ -12,6 +13,7 @@ const App = () => {
     const result= localStorage.getItem('KEC-MEDIA')
     if(result!=null){
     dispatch(setCurrentUser(JSON.parse(result)))
+    dispatch(setMyDetails())
     }
     dispatch(getAllPost())
   },[dispatch])

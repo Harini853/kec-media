@@ -1,12 +1,12 @@
 .navbar {
-    background-color: var(--blue) !important;
-    border-bottom: 2px solid var(--white);
+    background-color: white !important;
+    border-bottom: 2px solid var(--blue);
     align-items: center;
 
     .navbar-brand,
     .nav-link {
-        color: var(--white) !important;
-        font-size: 20px;
+        color: var(--blue) !important;
+        font-size: 24px;
     }
 
     .nav-link {
@@ -17,8 +17,8 @@
     font-size: 20px;
 
     .active {
-        background-color: var(--green);
-        color: var(--white) !important;
+        background-color: var(--blue);
+        color: white !important;
         border-radius: 30px;
 
     }

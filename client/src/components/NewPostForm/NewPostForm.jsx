@@ -45,7 +45,7 @@ const NewPostForm = () => {
                     <button className="btn btn-primary">Add</button>
                   </div>
                   <div className="col-6 d-grid">
-                    <button className="btn btn-danger">Cancel</button>
+                   <button onClick={cancel} className="btn btn-danger">Cancel</button>
                   </div>
               </form>
             </div>

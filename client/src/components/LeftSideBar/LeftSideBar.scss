@@ -9,6 +9,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
     .img-container{
         width: 150px;
         height: 150px;
@@ -20,7 +21,9 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            
+            &:hover{
+                transform: scale(1.2);
+            }
         }
     }
     .profile-content{
