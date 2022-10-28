@@ -5,11 +5,11 @@ import { useDispatch } from 'react-redux'
 import Logo from '../Logo/Logo'
 import { login } from '../../actions/auth'
 const Login = () => {
-  const dispatch=useDispatch()
-  const navigate=useNavigate()
-  const [email,setEmail]=useState('')
-  const [password,setPassword]=useState('')
-  const handleSubmit=(e)=>{
+const dispatch=useDispatch()
+const navigate=useNavigate()
+const [email,setEmail]=useState('')
+const [password,setPassword]=useState('')
+const handleSubmit=(e)=>{
     e.preventDefault()
     dispatch(login({email,password},navigate))
   }

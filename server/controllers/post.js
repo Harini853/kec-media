@@ -59,9 +59,13 @@ module.exports.likePost = async(req,res)=>{
     const {userId,id}=req.body
     try {
         const post = await Post.findById(id)
+        for(let i of post.likes){
+            console.log(i,userId)
+        }
         const likeCount = post.likes.findIndex((id) => id == String(userId))
+        console.log(likeCount)
        
-        if(likeCount ===-1){
+        if(likeCount ==-1){
                  post.likes.push(userId)
         }
         await post.save();
