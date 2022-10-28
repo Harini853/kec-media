@@ -89,3 +89,15 @@ module.exports.myDetails = async(req,res)=>{
         res.status(500).send(err)
     }
 }
+
+module.exports.getAllUsers = async(req,res)=>{
+
+    try {
+        const users = await User.find({}).populate('posts')
+         console.log(users)
+        res.status(200).json(users)
+    } catch (err) {
+        console.log(err.message)
+        res.status(500).json(err.message)
+    }
+}

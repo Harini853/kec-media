@@ -6,6 +6,7 @@ import { setCurrentUser } from './actions/currentUser';
 import { useEffect } from 'react';
 import { getAllPost } from './actions/post';
 import {setMyDetails} from './actions/details'
+import { getAllUsers } from './actions/user';
 const App = () => {
 
   const dispatch=useDispatch()
@@ -16,6 +17,7 @@ const App = () => {
     dispatch(setMyDetails())
     }
     dispatch(getAllPost())
+    dispatch(getAllUsers())
   },[dispatch])
   return (
     <div className="App">

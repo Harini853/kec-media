@@ -26,6 +26,7 @@ export const likepost =(postData,navigate)=> async(dispatch)=>{
         const {data}=await api.likePost(postData)
         dispatch(getAllPost())
         navigate('/Home')
+    
     } catch (error) {
         alert(error)
     }
@@ -36,7 +37,7 @@ export const addNewComment = (commentData,navigate)=> async(dispatch)=>{
         const {data}=api.addComment(commentData)
         dispatch(getAllPost())
         navigate('/Home')
-        window.location.reload();
+        
     } catch (err) {
         alert(err)
     }
