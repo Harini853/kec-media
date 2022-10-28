@@ -7,7 +7,7 @@ import {useNavigate} from 'react-router-dom'
 import { likepost,addNewComment } from '../../actions/post'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
-
+import { Link } from 'react-router-dom'
 const Postcard =({post})=> {
   const User = useSelector((state)=>(state.detailsReducer))
   const [comment,setComment]=useState(false)
@@ -19,15 +19,12 @@ const Postcard =({post})=> {
   let userId=User?.data?._id
   const updateLike= ()=>{
     const id=post._id
-    const userId=post.postedBy._id
+    const userId=User?.data._id
     dispatch(likepost({id,userId},navigate))
   }
   const [flag,setFlag]=useState(false)
   
-  const heart ={
-    color:'red'
-  }
-
+ 
   const handleComment = (e)=>{
      e.preventDefault()
      const id=post._id
@@ -41,6 +38,8 @@ useEffect(()=>{
     if(liked!=-1){
       setFlag(true)
     }
+    setAddComment(false)
+    setComment(false)
 },[post])
  
    
@@ -49,7 +48,7 @@ useEffect(()=>{
         <div className='post-card-container my-3'>
                   <div className='profile-name-container'> 
                           <i className="fa-regular fa-user"></i>  
-                           <h4>{post.postedBy.name} - {post.postedBy.rollno}</h4> 
+                           <Link to={`/Profile/${post.postedBy._id}`}><h4>{post.postedBy.name} - {post.postedBy.rollno}</h4> </Link>
                           </div>
                           <div className='student-dept my-2'>
                             {post.postedBy.department}

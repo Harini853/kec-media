@@ -6,6 +6,7 @@ import Home from './pages/Home/Home'
 import NewPostForm from './components/NewPostForm/NewPostForm'
 import LandingPage from './pages/LandingPage/LandingPage'
 import EditProfileForm from './components/EditProfileForm/EditProfileForm'
+import OtherProfile from './pages/OtherProfile/OtherProfile'
 const AllRoutes = () => {
   return (
         <Routes>
@@ -15,6 +16,7 @@ const AllRoutes = () => {
             <Route path='/Home' element={<Home/>} />
            <Route path='/New' element={<NewPostForm />} />
            <Route path='/Edit' element={<EditProfileForm />}/>
+           <Route path='/Profile/:id' element={<OtherProfile />} />
         </Routes>
   )
 }
