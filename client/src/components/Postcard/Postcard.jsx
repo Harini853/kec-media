@@ -43,7 +43,7 @@ useEffect(()=>{
     setComment(false)
 },[post])
  
-   console.log(post.comment)
+   
   return (
    
         <div className='post-card-container my-3'>
@@ -90,10 +90,10 @@ useEffect(()=>{
                     </div>}
                   {addComment && 
                   <div className='comment-form'>
-                      <form onSubmit={handleComment}>
+                      <form >
                         <div className="mb-3">
                           <input type="text" placeholder='Your comment' className='form-control' value={commentText} onChange={e => setText(e.target.value)} />
-                          <div className="add-btn my-2" >Post comment</div>
+                          <div  onClick={handleComment} className="add-btn my-2" >Post comment</div>
                         </div>
                       </form>
                   </div> }

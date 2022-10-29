@@ -16,9 +16,9 @@ import { setMyDetails } from './details';
 export const updateFollower = (followdata,navigate)=>async(dispatch)=>{
     try {
         const {data}=await api.updateFollower(followdata);
+        const {id}=followdata
         dispatch(getAllUsers())
-        dispatch(setMyDetails())
-        window.location.reload()
+        navigate('/Home')
     } catch (error) {
         alert(error.message)
     }

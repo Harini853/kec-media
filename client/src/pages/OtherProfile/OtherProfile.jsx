@@ -4,6 +4,7 @@ import {useSelector,useDispatch} from 'react-redux'
 import {useParams,useNavigate} from 'react-router-dom'
 import moment from 'moment';
 import OtherProfileCard from '../../components/OtherProfileCard/OtherProfileCard';
+import { getAllUsers } from '../../actions/user';
 import { updateFollower } from '../../actions/user';
 import './OtherProfile.scss'
 const OtherProfile = () => {
@@ -15,32 +16,39 @@ const OtherProfile = () => {
   const current = useSelector((state)=>(state.detailsReducer))
   const userId=current?.data?._id
   const handleFollow =() =>{
-      const userId= current?.data._id
+      const userId= current?.data?._id
       dispatch(updateFollower({id,userId},navigate))
+    
   }
   useEffect(()=>{
-  const User = Users?.data.filter(d => id==d._id)
-  console.log(User);
+ 
+  const User = Users?.data?.filter(d => id==d._id)
   const followers=User[0]?.followers
-    const isFollowing= followers.findIndex(id =>id==userId)
+    const isFollowing= followers?.findIndex(id =>id==userId)
     console.log(isFollowing)
     if(isFollowing!=-1){
       setFlag(true)
     }
+ 
+  
   },[])
+
+  useEffect(()=>{
+    dispatch(getAllUsers())
+  },[dispatch])
 
   return (
     <div className='profile-outer-container container mb-5'>
-      {Users.data && <>
+      {Users.data!=null && <>
       {
-      Users.data.filter(d => id==d._id).map(user =>(
-      <div key={user._id}>
-        <div className="row">
-           <div className="col-md-8 offset-md-2 col-sm-12 profile-container">
+      Users?.data?.filter(d => id==d._id).map(user =>(
+       <div key={user._id}>
+         <div className="row">
+            <div className="col-md-8 offset-md-2 col-sm-12 profile-container">
                 <div className="profile-section">
-                    <div className="image-container">
-                      <img src={`http://localhost:8080/${user.image}`} alt="profile-image" />
-                    </div>
+                      <div className="image-container">
+                        <img src={`http://localhost:8080/${user.image}`} alt="profile-image" />
+                      </div>
                     <div className="profile-content">
                         <div className="name">{user?.name} - {user?.rollno}</div>
                         <div className="joinedOn text-muted">Joined {moment(user?.joinedOn).fromNow()}</div>
@@ -50,7 +58,6 @@ const OtherProfile = () => {
                         <div className="email">Email - {user.email}</div>
                         <div className="phone">Phone no - {user.phone}</div>
                         <div className="edit-profile-btn">
-                        
                          {flag ?   <button className='btn' >Following <i className="fa-solid fa-wifi"></i></button>
                          :   <button className='btn' onClick={handleFollow} >Follow <i className="fa-solid fa-wifi"></i></button> }
                           

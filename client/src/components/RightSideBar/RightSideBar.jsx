@@ -8,7 +8,7 @@ const RightSideBar = () => {
   const dispatch=useDispatch()
     const [search,searchKey]=useState('')
     const [user,setUsers]=useState(null)
-    const arr=[1,2,1]
+   
     const User=useSelector((state)=>(state.usersReducer))
     useEffect(()=>{
       if(User.data!=null){
@@ -28,9 +28,7 @@ const RightSideBar = () => {
        }
       }
     },[search])
-    useEffect(()=>{
-        console.log(user)
-    },[user])
+    
     useEffect(()=>{
       dispatch(getAllUsers())
     },[])

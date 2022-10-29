@@ -1,44 +1,63 @@
 .landing-page-container {
-    overflow-y: hidden;
-        height: 100vh;
-        width: 100%;
-        animation-name: changeBg;
-        animation-iteration-count: infinite;
-        animation-duration: 10s;
-        animation-timing-function: linear;
-        color: white;
-        .p-container{
-            
-       margin-top: 18%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        }
-        
-}
-@keyframes changeBg {
-    0% {
-           background-color: yellow;
-        }
-    
-        25% {
-           background-color: red;
-        }
-    
-        50% {
-            background-color:var(--pink);
-        }
-    
-        75% {
-           background-color: var(--blue);
-        }
-    
-        100% {
-           background-color: plum;
-        }
-    }
-    
-    
-   
+   overflow-y: hidden;
+   height: 100vh;
+   width: 100%;
+   animation-name: changeBg;
+   animation-iteration-count: infinite;
+   animation-duration: 10s;
+   animation-timing-function: linear;
+   color: white;
 
+   .p-container {
+
+      margin-top: 18%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+   }
+
+}
+
+@keyframes changeBg {
+   0% {
+      background: #bdc3c7;
+      /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7);
+      /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #2c3e50, #bdc3c7);
+      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+   }
+
+   25% {
+      background: #8360c3;
+      /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #2ebf91, #8360c3);
+      /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #2ebf91, #8360c3);
+      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+   }
+
+   50% {
+      background: #FEAC5E;
+      /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #4BC0C8, #C779D0, #FEAC5E);
+      /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #4BC0C8, #C779D0, #FEAC5E);
+      /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+   }
+
+   75% {
+      background-color: plum;
+   }
+
+   100% {
+      background-image: url('https://cdn2.vectorstock.com/i/1000x1000/77/01/chat-wallpaper-social-media-message-background-vector-30037701.jpg');
+
+      background-repeat: no-repeat;
+      background-size: cover;
+   }
+}
