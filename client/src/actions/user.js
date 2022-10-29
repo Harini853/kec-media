@@ -12,4 +12,10 @@ import * as api from '../api'
  }
 
 
-
+export const updateFOllower = (data,navigate)=>async(dispatch)=>{
+    try {
+        const {data}='';
+    } catch (error) {
+        alert(error.message)
+    }
+}

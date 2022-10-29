@@ -10,14 +10,16 @@ const OtherProfile = () => {
   const dispatch = useDispatch()
   const navigate=useNavigate()
   const Users = useSelector((state)=>(state.usersReducer))
-  
+  const current = useSelector((state)=>(state.detailsReducer))
+  const handleFollow =(id) =>{
+      const userId = current?.data._id
+  }
   return (
     <div className='profile-outer-container container mb-5'>
       {Users.data && <>
       {
-         Users.data.filter(d => id==d._id).map(user =>(
-          
-  <>
+      Users.data.filter(d => id==d._id).map(user =>(
+      <>
         <div className="row">
            <div className="col-md-8 offset-md-2 col-sm-12 profile-container">
                 <div className="profile-section">
@@ -34,7 +36,7 @@ const OtherProfile = () => {
                         <div className="phone">Phone no - {user.phone}</div>
                         <div className="edit-profile-btn">
                         
-                            <button className='btn'>Follow <i className="fa-solid fa-wifi"></i></button>
+                            <button className='btn' onClick={()=>handleFollow(user._id)}>Follow <i className="fa-solid fa-wifi"></i></button>
                           
                     </div>
                     

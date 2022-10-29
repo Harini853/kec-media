@@ -68,10 +68,9 @@ module.exports.updatePassword=async(req,res)=>{
 }
 
 module.exports.updateDetails = async(req,res)=>{
-    const {about,phone,id}=req.body
+    const {phone,id}=req.body
     try {
         const user=await User.findById(id)
-        user.about=about;
         user.phone=phone;
         await user.save()
         res.status(200).json("success");
@@ -94,7 +93,7 @@ module.exports.getAllUsers = async(req,res)=>{
 
     try {
         const users = await User.find({}).populate('posts')
-        console.log(users)
+      
         res.status(200).json(users)
     } catch (err) {
         console.log(err.message)
@@ -103,7 +102,7 @@ module.exports.getAllUsers = async(req,res)=>{
 }
 
 module.exports.addFollower = async(req,res)=>{
-    const {id,fid}=req.body
+    const {id,userId}=req.body
     try {
         const user =  await User.findById(id)
         user.followers.push(fid)

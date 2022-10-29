@@ -9,7 +9,7 @@ const SearchCard = ({user}) => {
         navigate(`/Profile/${id}`)
       }
   return (
-    <div onClick={handleNavigate} className="search-card-container shadow">
+    <div onClick={handleNavigate} className="search-card-container shadow mb-3">
         <div className="image-container">
             <img src={url} alt="search-profile-image" />
         </div>

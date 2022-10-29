@@ -4,7 +4,8 @@ const User=require('../models/user')
 module.exports.getAllPosts = async(req,res)=>{
     try {
         const posts = await Post.find().populate('postedBy');
-        res.status(200).json(posts)
+        const allPosts =[...posts].reverse()
+        res.status(200).json(allPosts)
     } catch (err) {
         console.log(err.message)
         res.status(500).json({msg:err.message})

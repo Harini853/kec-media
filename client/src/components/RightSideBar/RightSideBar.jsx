@@ -6,7 +6,7 @@ import {getAllUsers} from '../../actions/user'
 import SearchCard from '../SearchCard/SearchCard'
 const RightSideBar = () => {
   const dispatch=useDispatch()
-    const [search,searchKey]=useState('')
+    const [search,searchKey]=useState(null)
     const [user,setUsers]=useState(null)
     const arr=[1,2,1]
     const User=useSelector((state)=>(state.usersReducer))
@@ -19,13 +19,18 @@ const RightSideBar = () => {
       dispatch(getAllUsers())
     },[dispatch])
     useEffect(()=>{
+        if(search!=null){
         let str=search.toLowerCase()
         const data =  User?.data?.filter(user=>user.name.toLowerCase().includes(str))
         if(data?.length){
         setUsers(data)
         }
         console.log(data)
+      }
     },[search])
+    useEffect(()=>{
+      dispatch(getAllUsers())
+    },[])
 
   return (
     <div className='right-side-bar-container shadow'>
