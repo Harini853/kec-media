@@ -82,7 +82,9 @@ module.exports.updateDetails = async(req,res)=>{
 module.exports.myDetails = async(req,res)=>{
     const {id}=req.params
     try {
-        const user=await User.findById(id).populate('posts')
+        const user=await User.findById(id).populate('posts').populate({path:'posts',populate:{path:'comment',populate:{
+            path:'commentedBy'
+        }}});
         res.status(200).json(user)
     } catch (err) {
         res.status(500).send(err)
@@ -92,8 +94,10 @@ module.exports.myDetails = async(req,res)=>{
 module.exports.getAllUsers = async(req,res)=>{
 
     try {
-        const users = await User.find({}).populate('posts')
-      
+        const users = await User.find({}).populate('posts').populate({path:'posts',populate:{path:'comment',populate:{
+            path:'commentedBy'
+        }}});
+        console.log(users)
         res.status(200).json(users)
     } catch (err) {
         console.log(err.message)
@@ -105,7 +109,17 @@ module.exports.addFollower = async(req,res)=>{
     const {id,userId}=req.body
     try {
         const user =  await User.findById(id)
-        user.followers.push(fid)
+        let flag=0
+        for(let i of user.followers){
+            if(i==userId){
+                flag=1
+                break;
+            }
+        }
+    
+        if(flag!=1){
+                 user.followers.push(userId)
+        }
         await user.save()
         res.status(200).json("success")
     } catch (err) {

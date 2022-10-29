@@ -1,4 +1,5 @@
 import * as api from '../api'
+import { setMyDetails } from './details';
  export const getAllUsers= ()=> async(dispatch) =>{
     
     try {
@@ -12,9 +13,12 @@ import * as api from '../api'
  }
 
 
-export const updateFOllower = (data,navigate)=>async(dispatch)=>{
+export const updateFollower = (followdata,navigate)=>async(dispatch)=>{
     try {
-        const {data}='';
+        const {data}=await api.updateFollower(followdata);
+        dispatch(getAllUsers())
+        dispatch(setMyDetails())
+        window.location.reload()
     } catch (error) {
         alert(error.message)
     }

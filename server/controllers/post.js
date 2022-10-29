@@ -3,8 +3,11 @@ const Post=require('../models/post')
 const User=require('../models/user')
 module.exports.getAllPosts = async(req,res)=>{
     try {
-        const posts = await Post.find().populate('postedBy');
+        const posts = await Post.find().populate('postedBy').populate({path:'comment',populate:{
+            path:'commentedBy'
+        }});
         const allPosts =[...posts].reverse()
+        console.log(allPosts)
         res.status(200).json(allPosts)
     } catch (err) {
         console.log(err.message)

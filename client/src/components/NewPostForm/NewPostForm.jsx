@@ -25,11 +25,11 @@ const NewPostForm = () => {
     navigate('/Profile')
   }
   return (
-    <div className='new-post-form-container'>
+    <div className='new-post-form-container my-5'>
         <div className="container my-3">
-          <div className="row">
+          <div className="row my-5">
             <div className=" col-sm-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 ">
-          <div className="card">
+          <div className="card shadow">
             <div className="card-body" >
               <h2 className="text-center my-3">NEW POST</h2>
               <form className='row' onSubmit={handleSubmit} encType="multipart/form-data" >

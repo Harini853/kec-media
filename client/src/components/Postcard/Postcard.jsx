@@ -7,6 +7,7 @@ import {useNavigate} from 'react-router-dom'
 import { likepost,addNewComment } from '../../actions/post'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
+import CommentCard from '../CommentCard/CommentCard'
 import { Link } from 'react-router-dom'
 const Postcard =({post})=> {
   const User = useSelector((state)=>(state.detailsReducer))
@@ -42,7 +43,7 @@ useEffect(()=>{
     setComment(false)
 },[post])
  
-   
+   console.log(post.comment)
   return (
    
         <div className='post-card-container my-3'>
@@ -59,30 +60,32 @@ useEffect(()=>{
                   <img src={url}  alt="card-img"/>
                   </div>
                   <div className="posted-time text-muted">
-                    {moment(post.posteddOn).fromNow()}
+                    {moment(post.postedOn).fromNow()}
                   </div>
             <div className='bottom-icons-container'>
               {flag ?  <i style={{color:'red'}}  className="fa-regular fa-heart" onClick={updateLike}></i>  :
                    <i   className="fa-regular fa-heart" onClick={updateLike}></i> }
                   <i className="fa-regular fa-comment"></i>
-                  <i  className="fa-regular fa-paper-plane" ></i>
+                  
             </div>                                    
             <div className="bottom-icons-content">
               <p>{post.likes.length} likes</p>
               <p>{post.comment.length} comments</p>
-            </div>                          
+            </div>   
+                              
             <div className="view-btn">
-              <button onClick={()=>setComment(!comment)} className="btn  m-0">{comment ?'close comments':'View comments' } </button>
-            </div>
+            <div onClick={()=>setComment(!comment)} className="view-comment-button m-0">{comment ?'Close comments':'View comments' } </div> 
+        </div>
+
             {comment &&
             <div className="comments-section">
-              <button className="btn btn-outline-info btn-sm" onClick={()=>setAddComment(true)}>Add Comment</button>
+              <div className="add-btn mb-2" onClick={()=>setAddComment(true)}>Add Comment</div>
                   {post.comment.length==0 ? <p>No comments</p> :
                    <div className='comments-list'>
                     {post.comment.map(c => (
                       <div key={c._id}>
-                          <p>{c.content}</p>
-                      </div>  
+                        <CommentCard comment={c} />
+                      </div>    
                     ))}  
                     </div>}
                   {addComment && 
@@ -90,7 +93,7 @@ useEffect(()=>{
                       <form onSubmit={handleComment}>
                         <div className="mb-3">
                           <input type="text" placeholder='Your comment' className='form-control' value={commentText} onChange={e => setText(e.target.value)} />
-                          <button className="btn btn-outline-success my-2" >Add comment</button>
+                          <div className="add-btn my-2" >Post comment</div>
                         </div>
                       </form>
                   </div> }

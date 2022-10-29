@@ -33,13 +33,17 @@
             font-size: 2rem;
         }
     }
+
     .view-btn{
 
         margin: 10px  0;
-        font-size: 18px;
-        .btn{
-        color:var(--pink) !important;
-        }
+        padding: 2px;
+        cursor: pointer;
+        color:var(--pink);
+    }
+    .add-btn{
+        color: var(--blue);
+        cursor: pointer;
     }
 
     .bottom-icons-content{

@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import moment from 'moment'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import CommentCard from '../CommentCard/CommentCard'
 import { deletePost } from '../../actions/post'
 import './ProfileSmallCard.scss'
 const ProfileSmallCard = ({post}) => {
@@ -27,14 +28,14 @@ const ProfileSmallCard = ({post}) => {
               
                    <i   className="fa-regular fa-heart" ></i> 
                   <i className="fa-regular fa-comment"></i>
-                  <i  className="fa-regular fa-paper-plane" ></i>
+                  
             </div> 
         <div className="bottom-icons-content">
               <p>{post.likes.length} likes</p>
               <p>{post.comment.length} comments</p>
             </div>      
             <div className="view-btn">
-              <button onClick={()=>setComment(!comment)} className="btn  m-0">{comment ?'close comments':'View comments' } </button>
+              <div onClick={()=>setComment(!comment)} className=" m-0">{comment ?'Close comments':'View comments' } </div>
             </div>
             {comment &&
             <div className="comments-section">
@@ -43,7 +44,7 @@ const ProfileSmallCard = ({post}) => {
                    <div className='comments-list'>
                     {post.comment.map(c => (
                       <div key={c._id}>
-                          <p>{c.content}</p>
+                          <CommentCard  comment={c}/>
                       </div>  
                   ))}  
               </div>

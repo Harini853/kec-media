@@ -6,7 +6,7 @@ import {getAllUsers} from '../../actions/user'
 import SearchCard from '../SearchCard/SearchCard'
 const RightSideBar = () => {
   const dispatch=useDispatch()
-    const [search,searchKey]=useState(null)
+    const [search,searchKey]=useState('')
     const [user,setUsers]=useState(null)
     const arr=[1,2,1]
     const User=useSelector((state)=>(state.usersReducer))
@@ -14,7 +14,7 @@ const RightSideBar = () => {
       if(User.data!=null){
         setUsers(User.data)
       }
-    },[user])
+    },[])
     useEffect(()=>{
       dispatch(getAllUsers())
     },[dispatch])
@@ -22,12 +22,15 @@ const RightSideBar = () => {
         if(search!=null){
         let str=search.toLowerCase()
         const data =  User?.data?.filter(user=>user.name.toLowerCase().includes(str))
-        if(data?.length){
-        setUsers(data)
-        }
-        console.log(data)
+       
+       if(data){
+             setUsers(data)
+       }
       }
     },[search])
+    useEffect(()=>{
+        console.log(user)
+    },[user])
     useEffect(()=>{
       dispatch(getAllUsers())
     },[])

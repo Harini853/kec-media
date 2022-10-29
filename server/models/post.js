@@ -26,8 +26,13 @@ const postSchema = new Schema({
             },
             content:{
                 type:String
+            },
+            postedOn:{
+                type:Date,
+                default:Date.now
             }
         }
+
     ]
 })
 

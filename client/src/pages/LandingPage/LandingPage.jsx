@@ -18,19 +18,19 @@ const LandingPage=()=> {
   
   }
   return (
-    <div className='body-container'>
+    <div className='landing-page-container'>
         <div className='p-container'>
-        <pre className='text-white'>{`
-              Join With our KEC Community...!!!  
-           To Share Your Photos,videos,thoughts....
+        <p className='text-center'>
+              Join With our KEC Community...!!!  <br />
+           To Share Your Photos,videos,thoughts.... <br />
                      Updates of Kec!
-          `}</pre>
+          </p>
       
         </div>
-        <div className='get-started-link'>
+        <div className='get-started-link text-center'>
       
         
-        <button onClick={handleNavigate} className="started-link btn btn-success" style={{marginLeft:"10px"}}>Get Started </button>
+        <button onClick={handleNavigate} className="btn btn-outline-light" >Get Started </button>
         </div>
     </div>
   )

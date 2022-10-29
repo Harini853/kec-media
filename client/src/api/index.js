@@ -23,3 +23,4 @@ export const getAllUser = ()=>API.get('/user')
 export const likePost = (postData) => API.patch('/post/like',postData)
 
 export const addComment = (commentData)=>API.patch('/post/comment',commentData)
+export const updateFollower =(data)=>API.patch('/user/updateFollower',data)

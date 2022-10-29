@@ -1,25 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useEffect } from 'react';
 import {useSelector,useDispatch} from 'react-redux'
 import {useParams,useNavigate} from 'react-router-dom'
 import moment from 'moment';
 import OtherProfileCard from '../../components/OtherProfileCard/OtherProfileCard';
+import { updateFollower } from '../../actions/user';
 import './OtherProfile.scss'
 const OtherProfile = () => {
   const {id}=useParams()
   const dispatch = useDispatch()
   const navigate=useNavigate()
+  const [flag,setFlag]=useState(false)
   const Users = useSelector((state)=>(state.usersReducer))
   const current = useSelector((state)=>(state.detailsReducer))
-  const handleFollow =(id) =>{
-      const userId = current?.data._id
+  const userId=current?.data?._id
+  const handleFollow =() =>{
+      const userId= current?.data._id
+      dispatch(updateFollower({id,userId},navigate))
   }
+  useEffect(()=>{
+  const User = Users?.data.filter(d => id==d._id)
+  console.log(User);
+  const followers=User[0]?.followers
+    const isFollowing= followers.findIndex(id =>id==userId)
+    console.log(isFollowing)
+    if(isFollowing!=-1){
+      setFlag(true)
+    }
+  },[])
+
   return (
     <div className='profile-outer-container container mb-5'>
       {Users.data && <>
       {
       Users.data.filter(d => id==d._id).map(user =>(
-      <>
+      <div key={user._id}>
         <div className="row">
            <div className="col-md-8 offset-md-2 col-sm-12 profile-container">
                 <div className="profile-section">
@@ -36,7 +51,8 @@ const OtherProfile = () => {
                         <div className="phone">Phone no - {user.phone}</div>
                         <div className="edit-profile-btn">
                         
-                            <button className='btn' onClick={()=>handleFollow(user._id)}>Follow <i className="fa-solid fa-wifi"></i></button>
+                         {flag ?   <button className='btn' >Following <i className="fa-solid fa-wifi"></i></button>
+                         :   <button className='btn' onClick={handleFollow} >Follow <i className="fa-solid fa-wifi"></i></button> }
                           
                     </div>
                     
@@ -63,7 +79,7 @@ const OtherProfile = () => {
        
         
     </div>
-         </>
+         </div>
         ))
       }
 

@@ -8,6 +8,7 @@ import moment from 'moment'
 import { useEffect } from 'react'
 import { setMyDetails } from '../../actions/details'
 import ProfileSmallCard from '../../components/ProfileSmallCard/ProfileSmallCard'
+
 const Profile = () => {
   const dispatch = useDispatch()
   const User=useSelector((state)=>(state.detailsReducer))

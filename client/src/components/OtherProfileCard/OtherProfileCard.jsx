@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import moment from 'moment'
-
+import CommentCard from '../CommentCard/CommentCard'
 const OtherProfileCard = ({post}) => {
   
   const [comment,setComment]=useState(false)
@@ -20,14 +20,14 @@ const OtherProfileCard = ({post}) => {
               
                    <i   className="fa-regular fa-heart" ></i> 
                   <i className="fa-regular fa-comment"></i>
-                  <i  className="fa-regular fa-paper-plane" ></i>
+                
             </div> 
         <div className="bottom-icons-content">
               <p>{post.likes.length} likes</p>
               <p>{post.comment.length} comments</p>
             </div>      
             <div className="view-btn">
-              <button onClick={()=>setComment(!comment)} className="btn  m-0">{comment ?'close comments':'View comments' } </button>
+              <div onClick={()=>setComment(!comment)} className=" m-0">{comment ?'Close comments':'View comments' } </div>
             </div>
             {comment &&
             <div className="comments-section">
@@ -36,7 +36,7 @@ const OtherProfileCard = ({post}) => {
                    <div className='comments-list'>
                     {post.comment.map(c => (
                       <div key={c._id}>
-                          <p>{c.content}</p>
+                          <CommentCard comment={c} />
                       </div>  
                   ))}  
               </div>
