@@ -1,6 +1,13 @@
-import {NavLink} from "react-router-dom";
+import React from 'react'
 import './Navbar.scss'
-function Navbar() {
+import {NavLink,useNavigate} from "react-router-dom";
+
+const Navbar =()=> {
+  const navigate=useNavigate()
+    const logout = ()=>{
+      localStorage.removeItem('KEC-MEDIA')
+      navigate('/Auth')
+    }
   return (
     
     <nav className="navbar navbar-expand-md">
@@ -20,9 +27,9 @@ function Navbar() {
             <li className="nav-item">
                 <NavLink to='/Profile' className='nav-link' activeclassname='active' style={{fontSize:'20px'}} >Profile</NavLink>
             </li>
-            {/* <li className="nav-item">
-              <NavLink to='/Auth' className='nav-link' activeclassname='active' style={{fontSize:'20px'}}>Logout</NavLink>
-            </li> */}
+            <li className="nav-item">
+              <div to='/Auth' onClick={logout} className='nav-link'  style={{fontSize:'20px'}}>Logout</div>
+            </li>
             
         </ul>
       </div>

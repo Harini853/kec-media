@@ -7,7 +7,7 @@ const cors=require("cors")
 const userRoutes = require('./routes/user.js')
 const postRoutes = require('./routes/post.js')
 dotenv.config()
-// const courseRoutes= require('./routes/course.js')
+
 const DATABASE_URL =process.env.DB
 mongoose.connect(DATABASE_URL,{useNewUrlParser:true,useUnifiedTopology:true})
 .then( () => {
@@ -26,7 +26,7 @@ app.use(cors())
 app.use('/user',userRoutes)
 app.use('/post',postRoutes)
 app.get('/',(req,res)=>{
-    res.send('edu learn website')
+    res.send('KEC_MEDIA SERVER')
 })
 
 const PORT = process.env.PORT || 8080
