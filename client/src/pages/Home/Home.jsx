@@ -6,8 +6,7 @@ import LeftSideBar from '../../components/LeftSideBar/LeftSideBar'
 
 import './Home.scss'
 const Home = () => {
- 
-  return (
+ return (
     <div className="home-container">
         <Navbar />
         <div className="container">
