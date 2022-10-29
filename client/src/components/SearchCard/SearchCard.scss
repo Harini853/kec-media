@@ -1,0 +1,26 @@
+.search-card-container{
+    cursor: pointer;
+    height: 70px;
+    width: 100%;
+    display: flex;
+    border-bottom: 2px solid lightgray;
+    border-radius: 30px;
+    padding: 3px;
+    align-items: center;
+    .image-container{
+        width: 50%;
+        height: 100%;
+        img{
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+    }
+    .profile-details{
+        .name{
+            font-weight: bold;
+            color: var(--blue);
+        }
+    }
+}

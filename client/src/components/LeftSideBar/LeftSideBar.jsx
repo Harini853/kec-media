@@ -9,7 +9,6 @@ import { setMyDetails } from '../../actions/details'
 const LeftSideBar = () => {
   const dispatch = useDispatch()
   const User = useSelector((state)=>(state.detailsReducer))
-  console.log(User.data);
   useEffect(()=>{
     if(User.data==null){
         dispatch(setMyDetails())

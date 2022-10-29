@@ -94,10 +94,22 @@ module.exports.getAllUsers = async(req,res)=>{
 
     try {
         const users = await User.find({}).populate('posts')
-         console.log(users)
+        console.log(users)
         res.status(200).json(users)
     } catch (err) {
         console.log(err.message)
         res.status(500).json(err.message)
+    }
+}
+
+module.exports.addFollower = async(req,res)=>{
+    const {id,fid}=req.body
+    try {
+        const user =  await User.findById(id)
+        user.followers.push(fid)
+        await user.save()
+        res.status(200).json("success")
+    } catch (err) {
+        res.status(500).send(err.message)
     }
 }

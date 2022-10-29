@@ -34,7 +34,7 @@ const NewPostForm = () => {
               <h2 className="text-center my-3">NEW POST</h2>
               <form className='row' onSubmit={handleSubmit} encType="multipart/form-data" >
                 <div className="mb-3">
-                  <lablel className="form-label">DESCRIPTION</lablel>
+                  <label className="form-label">DESCRIPTION</label>
                   <textarea name="desc" value={description} onChange={e => setDesc(e.target.value)} cols="1" rows="2" className='form-control'></textarea>
                 </div>
                   <div className="form-group mb-3">

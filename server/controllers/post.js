@@ -46,7 +46,7 @@ module.exports.deletePost = async(req,res)=>{
     const {id}=req.params
     try {
         const post = await Post.findByIdAndDelete(id);
-        await post.save();
+        
         res.status(200).send('success')
     } catch (err) {
         res.status(404).send(err.message)

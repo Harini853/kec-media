@@ -1,21 +1,46 @@
 import React,{useState} from 'react'
 import './RightSideBar.scss'
-import ProfileSmallCard from '../ProfileSmallCard/ProfileSmallCard'
+import { useSelector,useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import {getAllUsers} from '../../actions/user'
+import SearchCard from '../SearchCard/SearchCard'
 const RightSideBar = () => {
+  const dispatch=useDispatch()
     const [search,searchKey]=useState('')
+    const [user,setUsers]=useState(null)
     const arr=[1,2,1]
+    const User=useSelector((state)=>(state.usersReducer))
+    useEffect(()=>{
+      if(User.data!=null){
+        setUsers(User.data)
+      }
+    },[user])
+    useEffect(()=>{
+      dispatch(getAllUsers())
+    },[dispatch])
+    useEffect(()=>{
+        let str=search.toLowerCase()
+        const data =  User?.data?.filter(user=>user.name.toLowerCase().includes(str))
+        if(data?.length){
+        setUsers(data)
+        }
+        console.log(data)
+    },[search])
+
   return (
     <div className='right-side-bar-container shadow'>
             <div className="input-search">
-                <input type="text" className="form-control" placeholder='Search Freinds' />
+                <input type="text" className="form-control" placeholder='Search Friends' value={search} onChange={e => searchKey(e.target.value)} />
                 <i className="fa-solid fa-magnifying-glass"></i>
             </div>
+            {user &&
             <div className="search-list">
                 <p className="top-results">Top Results</p>
                   <div className="list">
-                    {/* {arr.map((a,idx) => <ProfileSmallCard key={idx}/>)} */}
+                    {user.map((u) => <SearchCard key={u._id} user={u}/>)}
                   </div>
             </div>
+      }
     </div>
   )
 }

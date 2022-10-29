@@ -1,18 +1,11 @@
 import React,{useState} from 'react'
 import moment from 'moment'
-import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { deletePost } from '../../actions/post'
-import './ProfileSmallCard.scss'
-const ProfileSmallCard = ({post}) => {
-  const dispatch=useDispatch()
-  const navigate=useNavigate()
+
+const OtherProfileCard = ({post}) => {
+  
   const [comment,setComment]=useState(false)
   const url=`http://localhost:8080/${post.image}`
-  const onDelete = ()=>{
-        const id =post._id
-        dispatch(deletePost(id,navigate))
-  }
+ 
   return(
    <div className="profile-small-card-container">
       <div className="img-container">
@@ -20,7 +13,7 @@ const ProfileSmallCard = ({post}) => {
       </div>
       <div className="image-below-container">
       <p className="text-muted">{moment(post.postedOn).fromNow()}</p>
-      <i onClick={onDelete} className="fa-solid fa-trash"></i>
+    
       </div>
       <h5 className="">{post.description}</h5>
       <div className='bottom-icons-container'>
@@ -59,4 +52,4 @@ const ProfileSmallCard = ({post}) => {
 
 }
 
-export default ProfileSmallCard
+export default OtherProfileCard

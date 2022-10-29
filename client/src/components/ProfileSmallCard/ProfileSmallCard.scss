@@ -10,4 +10,34 @@
             width: 100%;
         }
     }
+    .image-below-container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        i{
+            &:hover{
+                color: red;
+            }
+        }
+    }
+    .bottom-icons-container {
+             margin-top: 10px;
+             display: flex;
+             justify-content: flex-start;
+             gap: 10px;
+             align-items: center;
+    
+             i {
+                 font-size: 2rem;
+             }
+         }
+    .bottom-icons-content {
+        display: flex;
+        gap: 10px;
+    
+        p {
+            font-size: 14px;
+            font-weight: bold;
+        }
+    }
 }

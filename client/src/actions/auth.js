@@ -55,3 +55,4 @@ export const updateDetails =(myData,navigate)=>async(dispatch)=>{
         alert(err.message)
     }
 }
+

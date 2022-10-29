@@ -25,6 +25,7 @@ export const likepost =(postData,navigate)=> async(dispatch)=>{
     try {
         const {data}=await api.likePost(postData)
         dispatch(getAllPost())
+        
         navigate('/Home')
     
     } catch (error) {
@@ -36,10 +37,21 @@ export const addNewComment = (commentData,navigate)=> async(dispatch)=>{
     try {
         const {data}=api.addComment(commentData)
         dispatch(getAllPost())
+        window.location.reload()
         navigate('/Home')
         
     } catch (err) {
         alert(err)
+    }
+}
+
+export const deletePost =(id,navigate)=>async(dispatch)=>{
+    try {
+        const {data}=await api.deletePost(id)
+        dispatch(getAllPost())
+        navigate('/Home')
+    } catch (error) {
+        alert(error.message)
     }
 }
 
